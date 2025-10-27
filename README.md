@@ -2,11 +2,11 @@
 
 本项目提供了一个专为 macOS 用户设计的、开箱即用的 DeepSeek-OCR 工作流，让你可以在自己的 Mac 上本地运行强大的 [DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR) 模型。
 
-项目内置了 Gradio 驱动的 Web 用户界面，并对 Apple Silicon (M1/M2/M3/M4) 和 Intel CPU 进行了优化，让你无需强大的云端 GPU，也能在本地对图像和 PDF 文档进行高质量的 OCR 识别。
+项目内置 Gradio Web 界面，默认在 CPU 上稳定运行（Apple Silicon 与 Intel 均已验证）。同时提供 Apple Silicon 的 MPS（GPU）实验性支持。让你无需 CUDA，即可在本地完成图像与 PDF 的高质量 OCR。
 
 ## ✨ 功能特性
 
-- ** macOS 深度优化**: 在 Apple Silicon (MPS) 和 Intel CPU 上都能高效运行。
+- ** macOS 兼容**: 在 Apple Silicon 与 Intel 的 CPU 上稳定运行；提供 MPS（Apple GPU）实验性支持，性能因机型/系统/库版本而异。
 - **🚀 一键式安装**: 提供自动化配置脚本 (`setup.py`)，引导用户完成所有环境配置。
 - **🖼️ 便捷 Gradio 界面**: 提供简单易用的 Web 界面，轻松上传文件并进行 OCR。
 - **📄 图像与 PDF 支持**: 支持处理单个图像或完整的 PDF 文档。
@@ -47,7 +47,7 @@ git clone https://huggingface.co/deepseek-ai/DeepSeek-OCR
 
 ### 步骤 3: 运行自动化配置脚本 (核心)
 
-这是最关键的一步！我们提供了一个自动化脚本 `setup.py` 来为你完成所有繁琐的配置。
+这是最关键的一步！项目提供了一个自动化脚本 `setup.py` 来为你完成所有繁琐的配置。
 
 在终端中运行以下命令：
 

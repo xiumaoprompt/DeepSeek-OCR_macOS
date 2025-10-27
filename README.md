@@ -1,5 +1,7 @@
+[![简体中文](https://img.shields.io/badge/语言-简体中文-blue.svg)](README.md) [![English](https://img.shields.io/badge/Language-English-blue.svg)](README_en.md)
+
 # DeepSeek-OCR for macOS (Apple Silicon/Intel)
-[English README](README_en.md)
+
 本项目提供了一个专为 macOS 用户设计的、开箱即用的 DeepSeek-OCR 工作流，让你可以在自己的 Mac 上本地运行强大的 [DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR) 模型。
 
 项目内置 Gradio Web 界面，默认在 CPU 上稳定运行（Apple Silicon 与 Intel 均已验证）。同时提供 Apple Silicon 的 MPS（GPU）实验性支持。让你无需 CUDA，即可在本地完成图像与 PDF 的高质量 OCR。

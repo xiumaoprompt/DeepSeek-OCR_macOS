@@ -1,0 +1,26 @@
+
+# Ignore the large model directory downloaded from Hugging Face
+/DeepSeek-OCR/
+
+# Ignore the symlink we create
+/DeepSeek_OCR
+
+# Ignore the local output directory
+/output_macos/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore system-specific files
+.DS_Store
+
+# Ignore virtual environment directories
+.venv/
+venv/
+env/
+
+# Ignore Gradio cache
+.gradio_cache/

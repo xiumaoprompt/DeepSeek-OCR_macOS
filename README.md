@@ -1,81 +1,86 @@
-# DeepSeek-OCR for macOS
+# DeepSeek-OCR for macOS (Apple Silicon/Intel)
 
-This project provides a user-friendly Gradio web interface to run the powerful [DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR) model locally on your Mac, with optimizations for both Apple Silicon (MPS) and Intel CPUs.
+本项目提供了一个专为 macOS 用户设计的、开箱即用的 DeepSeek-OCR 工作流，让你可以在自己的 Mac 上本地运行强大的 [DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR) 模型。
 
-It allows you to perform high-quality OCR on images and PDFs directly on your machine, without needing a powerful cloud GPU.
+项目内置了 Gradio 驱动的 Web 用户界面，并对 Apple Silicon (M1/M2/M3/M4) 和 Intel CPU 进行了优化，让你无需强大的云端 GPU，也能在本地对图像和 PDF 文档进行高质量的 OCR 识别。
 
-![App Screenshot](https://raw.githubusercontent.com/your-username/your-repo-name/main/docs/screenshot.png) 
-*(Note: You will need to upload a screenshot to a `docs` folder in your repo and replace the link above)*
+## ✨ 功能特性
 
-## ✨ Features
+- ** macOS 深度优化**: 在 Apple Silicon (MPS) 和 Intel CPU 上都能高效运行。
+- **🚀 一键式安装**: 提供自动化配置脚本 (`setup.py`)，引导用户完成所有环境配置。
+- **🖼️ 便捷 Gradio 界面**: 提供简单易用的 Web 界面，轻松上传文件并进行 OCR。
+- **📄 图像与 PDF 支持**: 支持处理单个图像或完整的 PDF 文档。
+- **⚙️ 多种识别模式**: 可在不同分辨率模式间切换，以平衡速度与精度。
+- **🎯 强大的 OCR 任务**: 不仅支持将文档转换为 Markdown，还支持表格/公式识别、图像描述等高级功能。
+- **📦 纯本地化运行**: 所有计算都在你的本地机器上完成，确保数据隐私和安全。
 
-- ** macOS Optimized**: Runs efficiently on Apple Silicon (M1/M2/M3) and Intel-based Macs.
-- **🖼️ Gradio UI**: Easy-to-use web interface for OCR tasks.
-- **📄 Image & PDF Support**: Process single images or entire PDF documents.
-- **⚙️ Adjustable Modes**: Choose from different resolution modes to balance speed and accuracy.
-- **🎯 Advanced Tasks**: Supports not just Markdown conversion, but also table/figure parsing, image description, and visual localization.
-- **📦 Portable & Local**: No hardcoded paths. All processing is done 100% on your local machine.
+## 🚀 快速开始
 
-## 🚀 Getting Started
+### 环境要求
 
-### Prerequisites
+- 一台 macOS 系统的电脑。
+- **Python 3.12.x** (推荐使用 `3.12.11` 以获得最佳兼容性)。
+- [Git](https://git-scm.com/book/zh/v2/起步-安装-Git) (用于克隆代码仓库)。
 
-- A Mac with Python 3.10 or newer.
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for cloning the repository.
+### 步骤 1: 克隆本项目
 
-### 1. Clone This Repository
-
-Open your terminal and run the following command:
+打开“终端” (Terminal) 应用，运行以下命令：
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/xiumaoprompt/DeepSeek-OCR_macOS.git
+cd DeepSeek-OCR_macOS
 ```
-*(Note: Replace `your-username/your-repo-name` with your actual GitHub repository path after you create it.)*
 
-### 2. Download the DeepSeek-OCR Model
+### 步骤 2: 下载 DeepSeek-OCR 模型
 
-This project requires the original model files from Hugging Face.
+本项目需要依赖 Hugging Face 上的原始模型文件。
 
 ```bash
-# Make sure you have git-lfs installed (https://git-lfs.com)
+# 确保你已经安装了 git-lfs (https://git-lfs.com)
 git lfs install
 
-# Clone the model repository
+# 克隆模型仓库
 git clone https://huggingface.co/deepseek-ai/DeepSeek-OCR
 ```
 
-This will download the model into a `DeepSeek-OCR` folder in your project directory.
+这会将模型文件下载到你项目目录下的 `DeepSeek-OCR` 文件夹中。
 
-### 3. Apply the macOS Patch
+### 步骤 3: 运行自动化配置脚本 (核心)
 
-The original model code is designed for Linux with NVIDIA GPUs. We need to replace one file to make it work on macOS.
+这是最关键的一步！我们提供了一个自动化脚本 `setup.py` 来为你完成所有繁琐的配置。
 
-**Copy the patched file from this repository into the model folder:**
+在终端中运行以下命令：
 
 ```bash
-cp macos_workflow/patched_modeling_deepseekocr.py DeepSeek-OCR/modeling_deepseekocr.py
+python setup.py
 ```
-This command overwrites the original model script with the one optimized for macOS. **This step is crucial.**
 
-### 4. Install Dependencies
+脚本将会引导你完成以下操作：
+1.  **验证模型路径**：它会请你将下载好的 `DeepSeek-OCR` 文件夹拖入终端，以确认路径。
+2.  **应用 macOS 补丁**：自动将 `modeling_deepseekocr.py` 替换为适配 macOS 的版本。
+3.  **创建符号链接**：解决 Python 的模块导入问题。
+4.  **更新配置文件**：将你的模型路径写入项目配置中。
 
-Install all the necessary Python libraries using the provided `requirements.txt` file.
+整个过程完全自动化，你只需要根据提示操作即可。
+
+### 步骤 4: 安装依赖
+
+使用 `pip` 安装所有必需的 Python 库。
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Run the Application
+### 步骤 5: 启动应用
 
-You are all set! Launch the Gradio web app with this command:
+所有准备工作都已完成！现在启动 Gradio 应用：
 
 ```bash
 python -m macos_workflow.app
 ```
 
-Open your web browser and go to the local URL shown in the terminal (usually `http://127.0.0.1:7860`).
+脚本启动后，在浏览器中打开终端里显示的本地网址 (通常是 `http://127.0.0.1:7860`)，即可开始使用。
 
-## 🤝 How to Contribute
+## 🤝 如何贡献
 
-Contributions are welcome! If you have ideas for improvements or find a bug, please open an issue or submit a pull request.
+欢迎任何形式的贡献！如果你有任何改进建议或发现了 Bug，请随时提交 Issue 或 Pull Request。

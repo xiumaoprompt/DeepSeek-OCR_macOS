@@ -1,5 +1,6 @@
 transformers==4.46.3
 tokenizers==0.20.3
+torch==2.9.0
 PyMuPDF
 img2pdf
 einops
@@ -7,3 +8,4 @@ easydict
 addict 
 Pillow
 numpy
+gradio
